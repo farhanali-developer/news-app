@@ -1,0 +1,1 @@
+GET https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0fc509c42cd640b29bc0681869f93666 HTTP/1.1
