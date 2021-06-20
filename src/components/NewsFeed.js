@@ -1,22 +1,26 @@
-import React, { Component } from "react";
-import RecommendedNews from "./RecommendedNews";
-import Navbar from "./Navbar";
-import LatestNews from "./LatestNews";
+import React, { Component } from 'react'
+import RecommendedNews from './RecommendedNews'
+import Navbar from './Navbar'
+import LatestNews from './LatestNews'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 class NewsFeed extends Component {
   render() {
     return (
-      <div>
+      <Router>
         <Navbar />
-        <h2 style={{ marginTop: "50px", marginLeft: "35px" }}>Latest NEWS</h2>
-        <LatestNews />
-        <h2 style={{ marginTop: "50px", marginLeft: "35px" }}>
-          Recommended NEWS
-        </h2>
-        <RecommendedNews />
-      </div>
-    );
+
+        <Switch>
+          <Route path='/login'></Route>
+          <Route path='/signup'></Route>
+          <Route path='/'>
+            <LatestNews />
+            <RecommendedNews />
+          </Route>
+        </Switch>
+      </Router>
+    )
   }
 }
 
-export default NewsFeed;
+export default NewsFeed
