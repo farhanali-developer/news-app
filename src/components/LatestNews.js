@@ -14,6 +14,7 @@ import ShareIcon from "@material-ui/icons/Share";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,16 +49,18 @@ const LatestNews = () => {
   const classes = useStyles();
 
   const [news, setNews] = useState([]);
+
   useEffect(() => {
     axios.get("/api/news").then((news) => setNews(news.data));
   }, []);
 
+  let url = "#";
   return (
     <div className={classes.root}>
       <h2>Latest NEWS</h2>
       <Grid container spacing={0}>
         {news.map((news) => (
-          <Grid item xs={3} key={news._id}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={news._id}>
             <Card className={classes.root} mt={5}>
               <CardHeader
                 avatar={
@@ -71,15 +74,30 @@ const LatestNews = () => {
               <CardMedia
                 className={classes.media}
                 image={news.urlToImage}
-                title={news.title}
+                title={news.source.name}
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {news.description}
                 </Typography>
-                <Button variant="outlined" style={{ marginTop: "20px" }}>
+                <Button
+                  variant="outlined"
+                  style={{ marginTop: "20px" }}
+                  href={url}
+                >
                   Read More
                 </Button>
+                <Link href={news.url} target="_blank" rel="noopener">
+                  <Button
+                    variant="outlined"
+                    style={{
+                      marginTop: "20px",
+                      marginLeft: "20px",
+                    }}
+                  >
+                    Source Site
+                  </Button>
+                </Link>
               </CardContent>
 
               <CardActions disableSpacing>
