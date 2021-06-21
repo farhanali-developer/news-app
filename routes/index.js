@@ -1,13 +1,13 @@
-var express = require('express')
-var router = express.Router()
-const db = require('../models')
+var express = require("express");
+var router = express.Router();
+const db = require("../models");
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  db.news.find().then((news) => {
-    res.render('index', {
+router.get("/news", function (req, res, next) {
+  db.News.find().then((news) => {
+    res.render("index", {
       News: news,
-    })
-  })
-})
+    });
+  });
+});
 
-module.exports = router
+module.exports = router;
