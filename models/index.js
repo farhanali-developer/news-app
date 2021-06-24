@@ -11,4 +11,5 @@ mongoose.connect(
 
 module.exports = {
   News: require("./news"),
+  User: require("./user"),
 };

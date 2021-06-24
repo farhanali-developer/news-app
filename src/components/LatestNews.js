@@ -51,7 +51,7 @@ const LatestNews = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/news").then((news) => setNews(news.data));
+    axios.get("/news").then((news) => setNews(news.data));
   }, []);
 
   let url = "#";
