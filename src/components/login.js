@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,7 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 import Navbar from "./Navbar";
-import useSignUpForm from "./CustomHooks";
+//import useSignUpForm from "./CustomHooks";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,11 +38,31 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
 
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm();
+  // useEffect(() => {
+  //   axios.post("/user/login").then((inputs) => inputs.data);
+  // }, []);
 
-  useEffect(() => {
-    axios.patch("/login").then((inputs) => inputs.data);
-  }, []);
+  const [inputs, setInputs] = useState({});
+
+  const handleInputChange = (event) => {
+    event.persist();
+    setInputs((inputs) => ({
+      ...inputs,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    if (event) {
+      event.preventDefault();
+      axios
+        .post("/user/login", inputs)
+        .then((res) => console.log("This is in then statement", res.data))
+        .catch((error) => {
+          console.log("This is in catch", error);
+        });
+    }
+  };
 
   return (
     <div>

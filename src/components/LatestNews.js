@@ -15,6 +15,7 @@ import Button from "@material-ui/core/Button";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
+import NavbarSignedIn from "./NavbarSignedIn";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,6 +58,7 @@ const LatestNews = () => {
   let url = "#";
   return (
     <div className={classes.root}>
+      <NavbarSignedIn />
       <h2>Latest NEWS</h2>
       <Grid container spacing={0}>
         {news.map((news) => (

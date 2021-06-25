@@ -2,7 +2,9 @@ const router = require("express").Router();
 const Controller = require("../controllers");
 
 // router.post("/user", Controller.User.getUser);
-router.post("/", Controller.User.createUser);
+router.post("/signup", Controller.User.createUser);
+
+router.post("/login", Controller.User.checkUser);
 
 // router.post("/", function (req, res) {
 //   Controller.User.getUser(req.body)

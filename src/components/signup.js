@@ -11,7 +11,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Navbar from "./Navbar";
 import axios from "axios";
-import LatestNews from "./LatestNews";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,11 +48,10 @@ export default function SignUpForm() {
   };
 
   // const { msg, setMsg } = useState({});
-  var success;
 
   function temp(Data) {
-    // success = Data;
-    // console.log(Data);
+    //console.log(Data);
+
     var each;
     for (each in Data) {
       var msg = Data[each];
@@ -65,7 +63,7 @@ export default function SignUpForm() {
     if (event) {
       event.preventDefault();
       axios
-        .post("/signup", inputs)
+        .post("/user/signup", inputs)
         .then((res) => temp(res.data))
         .catch((error) => {
           console.log("This is in catch", error);
@@ -91,11 +89,11 @@ export default function SignUpForm() {
                 <h1>{msg.message}</h1>
               ))} */}
               {/* <h1>{msg}</h1> */}
-              <h1>{temp()}</h1>
+              {temp() && <h1>{temp()}</h1>}
 
               <Grid item xs={12}>
                 <TextField
-                  // autoComplete="fullname"
+                  autoComplete="fullname"
                   name="fullName"
                   variant="outlined"
                   required
@@ -115,7 +113,7 @@ export default function SignUpForm() {
                   id="username"
                   label="Username"
                   name="username"
-                  // autoComplete="username"
+                  autoComplete="username"
                   onChange={handleInputChange}
                   value={inputs.username}
                 />
@@ -129,7 +127,7 @@ export default function SignUpForm() {
                   label="Password"
                   type="password"
                   id="password"
-                  // autoComplete="current-password"
+                  autoComplete="current-password"
                   onChange={handleInputChange}
                   value={inputs.password}
                 />
