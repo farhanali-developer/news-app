@@ -48,6 +48,10 @@ export default function Login() {
     }));
   };
 
+  const handleClick = (event) => {
+    event.persist();
+  };
+
   const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
@@ -119,7 +123,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2" onClick={handleClick}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

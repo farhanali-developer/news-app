@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/news", require("./api/news"));
+app.use("/news", require("./api/user"));
 app.use("/user", require("./api/user"));
 // app.use("/login", require("./api/user"));
 app.listen(5000, () => {

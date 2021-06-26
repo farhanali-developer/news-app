@@ -4,6 +4,7 @@ import LatestNews from "./LatestNews";
 import Login from "./login";
 import Signup from "./signup";
 import RecommendedNews from "./RecommendedNews";
+import SingleNews from "./SingleNews";
 class NewsFeed extends Component {
   render() {
     return (
@@ -12,12 +13,15 @@ class NewsFeed extends Component {
           <Route path="/signup">
             <Signup />
           </Route>
-          <Route path="/news">
+          <Route path="/allnews">
             <LatestNews />
             {/* <RecommendedNews /> */}
           </Route>
           <Route path="/recommended">
             <RecommendedNews />
+          </Route>
+          <Route path="/news">
+            <SingleNews />
           </Route>
           <Route path="/">
             <Login />

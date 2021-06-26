@@ -4,6 +4,7 @@ exports.createUser = (req, res) => {
   db.User.findOne({ username: req.body.username })
     .then((user) => {
       if (!user) {
+        console.log("New User Created");
         db.User.create({ ...req.body }).then((user) =>
           res.status(200).json(user)
         );

@@ -49,22 +49,20 @@ export default function SignUpForm() {
 
   // const { msg, setMsg } = useState({});
 
-  function temp(Data) {
-    //console.log(Data);
-
-    var each;
-    for (each in Data) {
-      var msg = Data[each];
-      console.log(msg);
-    }
-    return msg;
-  }
+  // function temp(Data) {
+  //   var each;
+  //   for (each in Data) {
+  //     var msg = Data[each];
+  //     console.log(msg);
+  //   }
+  //   return msg;
+  // }
   const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
       axios
         .post("/user/signup", inputs)
-        .then((res) => temp(res.data))
+        .then((res) => console.log(res.data))
         .catch((error) => {
           console.log("This is in catch", error);
         });
@@ -85,12 +83,6 @@ export default function SignUpForm() {
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
-              {/* {msg.map((msg) => (
-                <h1>{msg.message}</h1>
-              ))} */}
-              {/* <h1>{msg}</h1> */}
-              {temp() && <h1>{temp()}</h1>}
-
               <Grid item xs={12}>
                 <TextField
                   autoComplete="fullname"
@@ -144,7 +136,7 @@ export default function SignUpForm() {
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

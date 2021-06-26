@@ -57,9 +57,10 @@ const LatestNews = () => {
 
   let url = "#";
   return (
-    <div className={classes.root}>
+    <div>
       <NavbarSignedIn />
-      <h2>Latest NEWS</h2>
+      <div className={classes.root}></div>
+      <h2 style={{ marginLeft: "20px", fontSize: "28px" }}>Latest NEWS</h2>
       <Grid container spacing={0}>
         {news.map((news) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={news._id}>
