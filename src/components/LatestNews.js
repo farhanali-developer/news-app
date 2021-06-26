@@ -52,7 +52,7 @@ const LatestNews = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    axios.get("/news").then((news) => setNews(news.data));
+    axios.get("/user/news").then((news) => setNews(news.data));
   }, []);
 
   let url = "#";

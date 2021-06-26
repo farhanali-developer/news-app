@@ -38,10 +38,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   axios.post("/user/login").then((inputs) => inputs.data);
-  // }, []);
-
   const [inputs, setInputs] = useState({});
 
   const handleInputChange = (event) => {
@@ -57,7 +53,7 @@ export default function Login() {
       event.preventDefault();
       axios
         .post("/user/login", inputs)
-        .then((res) => console.log("This is in then statement", res.data))
+        .then((res) => console.log(res.data))
         .catch((error) => {
           console.log("This is in catch", error);
         });
